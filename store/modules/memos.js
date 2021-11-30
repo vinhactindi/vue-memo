@@ -30,15 +30,16 @@ const mutations = {
     else state.selected = initialSelected;
   },
   saveMemo(state, memo) {
+    if (!memo.text) return;
+
     if (!memo?.id) {
       state.all.unshift({ id: uuid(), text: memo.text });
+      state.selected = initialSelected;
     } else {
       const updateMemo = state.all.find((m) => m.id === memo.id);
 
       if (updateMemo) updateMemo.text = memo.text;
     }
-
-    state.selected = initialSelected;
   },
   removeMemo(state, id) {
     state.all = state.all.filter((memo) => memo.id !== id);

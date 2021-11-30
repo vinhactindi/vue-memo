@@ -1,9 +1,9 @@
 <template>
   <section>
-    <textarea v-model="text" rows="4" cols="50"></textarea>
+    <textarea v-model="text"></textarea>
     <div>
       <button @click="saveMemo({ id, text })">Save</button>
-      <button @click="removeMemo(id)">Remove</button>
+      <button @click="removeMemo(id)">{{ id ? "Remove" : "Cancel" }}</button>
     </div>
   </section>
 </template>
@@ -29,4 +29,37 @@ export default {
 </script>
 
 <style scoped>
+textarea {
+  border: 1px solid;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 500px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7a7a7a;
+  color: #fff;
+}
+
+button:not(:last-child) {
+  margin-right: 5px;
+}
+button:not(:first-child) {
+  margin-left: 5px;
+}
 </style>
