@@ -37,9 +37,13 @@ const mutations = {
 
       if (updateMemo) updateMemo.text = memo.text;
     }
+
+    state.selected = initialSelected;
   },
   removeMemo(state, id) {
     state.all = state.all.filter((memo) => memo.id !== id);
+
+    state.selected = initialSelected;
   },
 };
 
